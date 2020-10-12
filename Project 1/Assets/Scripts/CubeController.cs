@@ -7,6 +7,7 @@ public class CubeController : MonoBehaviour
 
     [SerializeField] public GameObject CubePrefab;
     [SerializeField] public Material CubeMaterial;
+    [SerializeField] public GameObject CubeExplosion;
 
     private GameObject Cube;
 
@@ -123,6 +124,7 @@ public class CubeController : MonoBehaviour
             // Destroy
             else if (Input.GetKeyDown(KeyCode.D))
             {
+                Instantiate(CubeExplosion, Cube.transform.position, Cube.transform.rotation);
                 Destroy(Cube);
                 PlayerPrefs.SetInt("isSpawned", 0);
             }

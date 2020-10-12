@@ -252,6 +252,8 @@ MonoBehaviour:
   CubePrefab: {fileID: 4764263709653244455, guid: 590872644d9fa1b479c0b4a53d3f2824,
     type: 3}
   CubeMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  CubeExplosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
+    type: 3}
 --- !u!4 &421699768
 Transform:
   m_ObjectHideFlags: 0
