@@ -54,7 +54,7 @@ public class BillBall : MonoBehaviour
         // Handle display
         if (state == 0)
         {
-            Display.text = "Pete Power: " + petePowerLevel.ToString();
+            Display.text = "PETE POWER: " + petePowerLevel.ToString();
         }
         else if (state == 1) // WIN
         {
