@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         controller.SimpleMove(new Vector3(-Input.GetAxis("Horizontal") * speed, 0, -Input.GetAxis("Vertical") * speed));
+
+        if (room == 3)
+        {
+            cameras[2].transform.position = new Vector3(cameras[2].transform.position.x, cameras[2].transform.position.y, transform.position.z);
+        }
     }
 
     public void SetCamera(int cam)
