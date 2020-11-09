@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public float speed;
 
     public int room = 1;
+
+    public Camera[] cameras;
     
     // Start is called before the first frame update
     void Start()
@@ -22,5 +24,27 @@ public class Player : MonoBehaviour
     void Update()
     {
         controller.SimpleMove(new Vector3(-Input.GetAxis("Horizontal") * speed, 0, -Input.GetAxis("Vertical") * speed));
+    }
+
+    public void SetCamera(int cam)
+    {
+        if (cam == 1)
+        {
+            cameras[0].enabled = true;
+            cameras[1].enabled = false;
+            cameras[2].enabled = false;
+        }
+        else if (cam == 2)
+        {
+            cameras[0].enabled = false;
+            cameras[1].enabled = true;
+            cameras[2].enabled = false;
+        }
+        if (cam == 3)
+        {
+            cameras[0].enabled = false;
+            cameras[1].enabled = false;
+            cameras[2].enabled = true;
+        }
     }
 }

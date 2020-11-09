@@ -31,12 +31,14 @@ public class Door2 : MonoBehaviour
                 Debug.Log("Room 3");
 
                 player.room = 3;
+                player.SetCamera(3);
             }
             else if (player.room == 3)
             {
                 Debug.Log("Room 2");
 
                 player.room = 2;
+                player.SetCamera(2);
             }
         }
     }
