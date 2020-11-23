@@ -5,11 +5,13 @@ using UnityEngine;
 public class BloodZone : MonoBehaviour
 {
     public Player player;
+    public GameObject vhs1, vhs2;
 
     // Start is called before the first frame update
     void Awake()
     {
-
+        vhs1.SetActive(true);
+        vhs2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,7 +32,9 @@ public class BloodZone : MonoBehaviour
     private IEnumerator Kill()
     {
         player.alive = false;
-        yield return new WaitForSecondsRealtime(4f);
-        Debug.Log("COMMENCE");
+        yield return new WaitForSecondsRealtime(3f);
+        vhs1.SetActive(false);
+        vhs2.SetActive(true);
+        Application.Quit();
     }
 }
