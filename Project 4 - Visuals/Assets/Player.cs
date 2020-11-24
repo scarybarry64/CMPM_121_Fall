@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Barry Day, 11-23-20
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
 
     [Range(0.1f, 100)]
     public float speed;
+    [HideInInspector]
     public bool alive = true;
 
     void Awake()

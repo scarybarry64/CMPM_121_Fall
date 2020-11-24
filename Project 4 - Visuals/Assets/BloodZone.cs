@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Barry Day, 11-23-20
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,9 +34,10 @@ public class BloodZone : MonoBehaviour
     private IEnumerator Kill()
     {
         player.alive = false;
-        yield return new WaitForSecondsRealtime(3f);
+        FindObjectOfType<AudioManager>().Play("Dying");
+        yield return new WaitForSecondsRealtime(1.7f);
+        FindObjectOfType<AudioManager>().Play("Dead");
         vhs1.SetActive(false);
         vhs2.SetActive(true);
-        Application.Quit();
     }
 }
