@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &22707486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGlobal: 1
-  priority: 0
+  priority: 1
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: d3c996b966fb4b142a3c9deb5b1d1fac, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 0a54fea3959e7084e98a7090dffb8e62, type: 2}
 --- !u!4 &22707487
 Transform:
   m_ObjectHideFlags: 0
@@ -10868,7 +10868,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 19a12e5bd12b18b419ea285720ca2d61, type: 3}
     volume: 0.697
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Dead
     clip: {fileID: 8300000, guid: a94d14065f4c77142bfc605ed88d4d04, type: 3}

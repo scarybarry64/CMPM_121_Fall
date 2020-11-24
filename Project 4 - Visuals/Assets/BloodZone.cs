@@ -35,7 +35,7 @@ public class BloodZone : MonoBehaviour
     {
         player.alive = false;
         FindObjectOfType<AudioManager>().Play("Dying");
-        yield return new WaitForSecondsRealtime(1.7f);
+        yield return new WaitForSecondsRealtime(3f);
         FindObjectOfType<AudioManager>().Play("Dead");
         vhs1.SetActive(false);
         vhs2.SetActive(true);
