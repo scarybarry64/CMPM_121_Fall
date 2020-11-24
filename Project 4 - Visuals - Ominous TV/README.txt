@@ -27,11 +27,11 @@ in when the player gets too close to the TV (along with some other shit)
 
 Shader Graph:
 My favorite! Basically, I messed around with the shader graph for my Game
-Graphics class last spring. I have no idea why it works, but it works!
-I slapped this onto the TV screen. Also, to achieve the final death look,
-I slapped this onto an invisible plane pressed up directly to the camera.
-After a few seconds when the player enters the Blood Zone, I make the
-plane visible  to simulate the VHS shader overtaking the screen. The lens
+Graphics class last spring to make a VHS thingy. I have no idea why it works,
+but it works! I slapped this onto the TV screen. Also, to achieve the final
+death look, I slapped this onto an invisible plane pressed up directly to
+the camera. After a few seconds when the player enters the Blood Zone, I make
+the plane visible  to simulate the VHS shader overtaking the screen. The lens
 distortion worked nicely with this too.
 
 Local Particle:
