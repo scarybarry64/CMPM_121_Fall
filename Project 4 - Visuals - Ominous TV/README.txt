@@ -14,7 +14,8 @@ complete, as well as some extra credit I hope.
 
 Lights/Player Movement/Third Person Camera:
 Two lights are present, one is a directional for the dark sky and one is
-a spotlight for the TV. Player movement are camera are simple.
+a spotlight for the TV. Player movement and camera are simple. Player
+loses control after getting to close to TV.
 
 Global Post-Processing:
 Film grain and bloom.
