@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Rotates the camera via mouse input
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
