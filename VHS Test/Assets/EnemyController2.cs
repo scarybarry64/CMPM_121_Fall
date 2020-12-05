@@ -7,7 +7,7 @@ public class EnemyController2 : MonoBehaviour
 
     // Public
     [Range(1, 50)] public float speed;
-    [Range(10, 100)] public float detectionRadius;
+    [Range(1, 20)] public float detectionRadius;
     public PlayerMovement player;
     public Camera mainCam;
 
@@ -26,17 +26,9 @@ public class EnemyController2 : MonoBehaviour
     private void Update()
     {
 
-        //float distance = Vector3.Distance(transform.position, player.transform.position);
-        ////Debug.Log(distance);
-
-        //if (!visible && distance <= detectionRadius)
-        //{
-        //    FollowPlayer();
-        //}
-
         RaycastHit hit;
 
-        if (Physics.SphereCast(mainCam.transform.position, 10, mainCam.transform.forward, out hit, 1000))
+        if (Physics.SphereCast(mainCam.transform.position, detectionRadius, mainCam.transform.forward, out hit, 10000))
         {
             Debug.Log("Looked at!");
             FollowPlayer();

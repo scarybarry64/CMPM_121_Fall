@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Public
     [Range(1f, 20f)] public float speed;
-    [HideInInspector] public bool visionEnabled;
 
     // Private
     private CharacterController playerController;
@@ -17,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<CharacterController>();
-        visionEnabled = false;
     }
 
     private void Update()
@@ -28,18 +26,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = transform.right * x + transform.forward * z;
 
         playerController.Move(movement * speed * Time.deltaTime);
-
-        // Hold left click to use VHS-Vision
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            Debug.Log("VHS VISION");
-            visionEnabled = true;
-
-        }
-        else
-        {
-            visionEnabled = false;
-        }
 
         // Press Esc to exit play mode
         if (Input.GetKey(KeyCode.Escape))
