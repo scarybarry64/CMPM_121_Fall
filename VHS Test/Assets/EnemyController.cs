@@ -7,12 +7,14 @@ public class EnemyController : MonoBehaviour
 
     // Public
     [Range(1, 50)] public float speed;
+    [Range(10, 100)] public float detectionRadius;
     public PlayerMovement player;
 
     // Private
     private Rigidbody Body;
     private MeshRenderer Mesh;
     private Vector3 Movement;
+    private bool visible = false;
 
     private void Awake()
     {
@@ -24,13 +26,24 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
 
-        Mesh.enabled = false;
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        //Debug.Log(distance);
 
-        if (player.visionEnabled)
+        if (!visible && distance <= detectionRadius)
         {
-            Mesh.enabled = true;
             FollowPlayer();
         }
+
+    }
+
+    private void OnBecameInvisible()
+    {
+        visible = false;
+    }
+
+    private void OnBecameVisible()
+    {
+        visible = true;
     }
 
     // Faces and moves toward the player
