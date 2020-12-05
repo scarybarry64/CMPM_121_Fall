@@ -13,7 +13,12 @@ public class MouseLook : MonoBehaviour
 
     // Private
     private float rotationX = 0f;
-    
+
+
+
+    RaycastHit HitInfo;
+
+
     // Start is called before the first frame update
     void Start()
     {
