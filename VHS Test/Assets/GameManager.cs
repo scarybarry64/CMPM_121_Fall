@@ -14,27 +14,27 @@ public class GameManager : MonoBehaviour
     [Tooltip("How fast the player moves")]
     [Range(1, 50)] public float playerSpeed;
 
+
+
     // Enemy variables
     [Header("ENEMY SETTINGS")]
 
     [Tooltip("How fast enemy 1 moves")]
-    [Range(1, 500)] public float enemy1Speed;
+    [Range(1, 200)] public float enemy1Speed;
 
     [Tooltip("How far enemy 1 can aggro the player")]
-    [Range(10, 100)] public float enemy1DetectionRadius;
+    [Range(0.01f, 100)] public float enemy1DetectionRadius;
 
     [Tooltip("How fast enemy 2 moves")]
-    [Range(1, 50)] public float enemy2Speed;
+    [Range(1, 200)] public float enemy2Speed;
 
     [Tooltip("No idea how to describe this")]
-    [Range(10, 100)] public float enemy2DetectionRadius;
+    [Range(0.01f, 100)] public float enemy2DetectionRadius;
 
     [Tooltip("How fast enemy 3 moves")]
-    [Range(1, 50)] public float enemy3Speed;
+    [Range(1, 200)] public float enemy3Speed;
 
-    private void Awake()
-    {
-        //
-    }
+    
+
 
 }

@@ -6,20 +6,35 @@ public class EnemyController2 : MonoBehaviour
 {
 
     // Public
-    [Range(1, 50)] public float speed;
-    [Range(1, 20)] public float detectionRadius;
-    public PlayerMovement player;
-    public Camera mainCam;
+    //[Range(1, 50)] public float speed;
+    //[Range(1, 20)] public float detectionRadius;
+    //public PlayerMovement player;
+    public Camera camera;
 
-    // Private
-    private Rigidbody Body;
-    private MeshRenderer Mesh;
-    private Vector3 Movement;
+    // Local variables
+    private GameManager game;
+    private Player player;
+    //private Camera camera;
+    private Rigidbody body;
+    private MeshRenderer mesh;
+    private Vector3 movement;
+    private float speed, detectionRadius;
+
+
+
+    private float dis;
 
     private void Awake()
     {
-        Body = GetComponent<Rigidbody>();
-        Mesh = GetComponent<MeshRenderer>();
+
+        game = FindObjectOfType<GameManager>();
+        player = FindObjectOfType<Player>();
+        //camera = player.transform.GetChild(1).GetComponent<Camera>();
+        body = GetComponent<Rigidbody>();
+        mesh = GetComponent<MeshRenderer>();
+        speed = game.enemy2Speed;
+        detectionRadius = game.enemy2DetectionRadius;
+
     }
 
     // Update is called once per frame
@@ -28,16 +43,31 @@ public class EnemyController2 : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.SphereCast(mainCam.transform.position, detectionRadius, mainCam.transform.forward, out hit, 10000))
+        if (Physics.SphereCast(camera.transform.position, detectionRadius, camera.transform.forward, out hit, 10000))
+        //if (Physics.Raycast)
         {
-            Debug.Log("Looked at!");
-            FollowPlayer();
+            //FollowPlayer();
+            dis = hit.distance;
+
+            if (hit.rigidbody == body)
+            {
+                FollowPlayer();
+                //dis = hit.distance;
+            }
         }
         else
         {
-            Debug.Log("Not looked at!");
+            Debug.Log("STOP");
+            dis = 10000;
         }
 
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(camera.transform.position, camera.transform.position + camera.transform.forward * dis, Color.red, 2);
+        Gizmos.DrawWireSphere(camera.transform.position + camera.transform.forward * dis, detectionRadius);
 
     }
 
@@ -47,8 +77,8 @@ public class EnemyController2 : MonoBehaviour
     {
         Vector3 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        Body.rotation = Quaternion.Euler(0, angle, 0);
+        body.rotation = Quaternion.Euler(0, angle, 0);
         direction.Normalize();
-        Body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+        body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
     }
 }
