@@ -8,21 +8,21 @@ using UnityEngine;
 public class EnemyController3 : MonoBehaviour
 {
 
-    // Public
-    [Range(1, 50)] public float speed;
-    [Range(10, 100)] public float detectionRadius;
-    public PlayerMovement player;
-    public Camera mainCam;
-
-    // Private
-    private Rigidbody Body;
-    private MeshRenderer Mesh;
-    private Vector3 Movement;
+    // Local variables
+    private GameManager game;
+    private Player player;
+    private Rigidbody body;
+    private Vector3 movement;
+    private float speed;
 
     private void Awake()
     {
-        Body = GetComponent<Rigidbody>();
-        Mesh = GetComponent<MeshRenderer>();
+
+        game = FindObjectOfType<GameManager>();
+        player = FindObjectOfType<Player>();
+        body = GetComponent<Rigidbody>();
+        speed = game.enemy3Speed;
+
     }
 
     // Update is called once per frame
@@ -40,8 +40,8 @@ public class EnemyController3 : MonoBehaviour
     {
         Vector3 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        Body.rotation = Quaternion.Euler(0, angle, 0);
+        body.rotation = Quaternion.Euler(0, angle, 0);
         direction.Normalize();
-        Body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+        body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
     }
 }

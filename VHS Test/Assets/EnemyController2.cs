@@ -16,7 +16,7 @@ public class EnemyController2 : MonoBehaviour
 
     // Local variables
     private GameManager game;
-    private Player player;
+    new Player player;
     //private Camera camera;
     private Rigidbody body;
     private MeshRenderer mesh;

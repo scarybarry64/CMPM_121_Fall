@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     // Local variables
     private GameManager game;
     private CharacterController controller;
-    new Transform camera;
+    private Transform camera;
     private Text status;
     private Text time;
     private Text menu;
@@ -60,11 +60,11 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
-        // Press Esc to exit play mode,
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
+        //// Press Esc to exit play mode,
+        //if (Input.GetKey(KeyCode.Escape))
+        //{
+        //    UnityEditor.EditorApplication.isPlaying = false;
+        //}
 
     }
 
