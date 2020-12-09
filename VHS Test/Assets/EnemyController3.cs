@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// UNFINISHED
+// Always follows the player
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

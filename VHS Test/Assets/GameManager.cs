@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// Acts as a central brain that connects the game together
+// Stores the various settings for the player and enemies
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +16,6 @@ public class GameManager : MonoBehaviour
 
     [Tooltip("How fast the player moves")]
     [Range(1, 50)] public float playerSpeed;
-
-
 
     // Enemy variables
     [Header("ENEMY SETTINGS")]
@@ -34,7 +35,8 @@ public class GameManager : MonoBehaviour
     [Tooltip("How fast enemy 3 moves")]
     [Range(1, 200)] public float enemy3Speed;
 
-    
 
+    // Other stuff
+    [HideInInspector] public string status;
 
 }

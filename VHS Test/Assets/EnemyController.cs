@@ -1,16 +1,15 @@
-﻿using System.Collections;
+﻿// "Pale Lady" - based off the Weeping Angels from Doctor Who
+// Quickly moves toward the payer when not in camera view
+// Honestly some scary shit
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
 
-    // Public
-    //[Range(1, 50)] public float speed;
-    //[Range(10, 100)] public float detectionRadius;
-    //public PlayerMovement player;
-
-    // Local
+    // Local variables
     private GameManager game;
     private Player player;
     private Rigidbody body;
@@ -18,18 +17,19 @@ public class EnemyController : MonoBehaviour
     private float speed, detectionRadius;
     private bool visible = false;
 
+    // Initialize stuff
     private void Awake()
     {
+
         game = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
         body = GetComponent<Rigidbody>();
-
         speed = game.enemy1Speed;
         detectionRadius = game.enemy1DetectionRadius;
 
     }
 
-    // Update is called once per frame
+    // Every frame, track distance and determine follow behaviour
     private void Update()
     {
 
@@ -42,27 +42,31 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    // Track visiblity
     private void OnBecameInvisible()
     {
         visible = false;
     }
 
+    // Ditto
     private void OnBecameVisible()
     {
         visible = true;
     }
 
+    // Player go bye-bye when Pale Lady reaches em
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.name == "Player")
         {
-            Debug.Log("HIT!");
-            
+            Debug.Log("get fukt");
+            game.status = "dead";
         }
     }
 
     // Faces and moves toward the player
     // Code from: https://www.youtube.com/watch?v=4Wh22ynlLyk
+    // Creepy af
     private void FollowPlayer()
     {
         Vector3 direction = player.transform.position - transform.position;

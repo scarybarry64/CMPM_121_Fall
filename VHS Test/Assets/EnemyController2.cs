@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// UNFINISHED
+// Similar to enemy 1, but only follows when directly in view
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
