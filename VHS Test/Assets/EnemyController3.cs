@@ -34,6 +34,15 @@ public class EnemyController3 : MonoBehaviour
 
     }
 
+    // Player go bye-bye when Pale Lady reaches em
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.name == "Player")
+        {
+            game.status = "dead";
+        }
+    }
+
     // Faces and moves toward the player
     // Code from: https://www.youtube.com/watch?v=4Wh22ynlLyk
     private void FollowPlayer()

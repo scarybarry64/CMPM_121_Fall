@@ -1,6 +1,5 @@
 ﻿// "Pale Lady" - based off the Weeping Angels from Doctor Who
-// Quickly moves toward the payer when not in camera view
-// Honestly some scary shit
+// Moves toward the payer when not in camera view
 
 using System.Collections;
 using System.Collections.Generic;
@@ -29,15 +28,21 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    // Every frame, track distance and determine follow behaviour
+    // Every frame, face player and follow if not in camera view
     private void Update()
     {
 
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        // Face player at all times
+        Vector3 direction = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        body.rotation = Quaternion.Euler(0, angle, 0);
+        direction.Normalize();
 
-        if (!visible && distance <= detectionRadius)
+        // Move towards player if not in camera view
+        // Code from: https://www.youtube.com/watch?v=4Wh22ynlLyk
+        if (!visible)
         {
-            FollowPlayer();
+            body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
         }
 
     }
@@ -59,20 +64,8 @@ public class EnemyController : MonoBehaviour
     {
         if (collider.name == "Player")
         {
-            Debug.Log("get fukt");
             game.status = "dead";
         }
     }
 
-    // Faces and moves toward the player
-    // Code from: https://www.youtube.com/watch?v=4Wh22ynlLyk
-    // Creepy af
-    private void FollowPlayer()
-    {
-        Vector3 direction = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        body.rotation = Quaternion.Euler(0, angle, 0);
-        direction.Normalize();
-        body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
-    }
 }
