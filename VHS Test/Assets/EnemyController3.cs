@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController3 : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EnemyController3 : MonoBehaviour
     private GameManager game;
     private Player player;
     private Rigidbody body;
+    private NavMeshAgent agent;
     private Vector3 movement;
     private float speed;
 
@@ -21,6 +23,7 @@ public class EnemyController3 : MonoBehaviour
         game = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
         body = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
         speed = game.enemy3Speed;
 
     }
@@ -51,6 +54,7 @@ public class EnemyController3 : MonoBehaviour
         float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         body.rotation = Quaternion.Euler(0, angle, 0);
         direction.Normalize();
-        body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+        //body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+        agent.SetDestination(transform.position + (direction * speed * speed * speed * Time.deltaTime)); // NEEDS ADJUST
     }
 }
