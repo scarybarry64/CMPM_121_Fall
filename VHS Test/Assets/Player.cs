@@ -11,14 +11,15 @@ public class Player : MonoBehaviour
 
     // Local variables
     private GameManager game;
+    new AudioManager audio;
     private CharacterController controller;
-    private Transform camera;
+    new Transform camera;
     private Text status;
     private Text time;
     private Text menu;
     private float sensitivity, speed;
     private float rotationX = 0f;
-    private float initialTime, totalTime;
+    private float initialTime, totalTime, initialTimeSound;
     private string score;
 
     // Begin by getting stuff from game manager
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     {
 
         game = FindObjectOfType<GameManager>();
+        audio = FindObjectOfType<AudioManager>();
         controller = GetComponent<CharacterController>();
         camera = transform.Find("Camera");
         status = transform.Find("VHS Overlay").Find("Status").GetComponent<Text>();
@@ -36,12 +38,14 @@ public class Player : MonoBehaviour
 
     }
 
-    // Hide mouse cursor at start
+    // Set up stuff
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         game.status = "play";
         initialTime = Time.time;
+        initialTimeSound = Time.time;
         menu.enabled = false;
     }
 
@@ -86,7 +90,7 @@ public class Player : MonoBehaviour
 
     }
 
-    // Move using WASD or arrows
+    // Move using WASD or arrows, play footstep sounds
     private void HandleMovement()
     {
 
@@ -97,6 +101,20 @@ public class Player : MonoBehaviour
             float z = Input.GetAxis("Vertical"); // Unity uses xzy axis order
             Vector3 movement = transform.right * x + transform.forward * z;
             controller.Move(movement * speed * Time.deltaTime);
+            Debug.Log("x:" + x);
+            Debug.Log("z:" + z);
+
+
+            // If moving, randomly adjust footstep sound pitch and play often
+            if ((Time.time - initialTimeSound > 0.5) && (x != 0 || z != 0))
+            {
+
+                //int random = Mathf.Random
+
+                audio.SetPitch("Footstep2", Random.Range(0.1f, 1.25f));
+                audio.Play("Footstep2");
+                initialTimeSound = Time.time;
+            }
 
         }
 
