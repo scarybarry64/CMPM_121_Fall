@@ -150,13 +150,13 @@ public class Player : MonoBehaviour
         {
 
             //totalTime = Time.time + 6360;
-            totalTime = Time.time - initialTime + 6360;
-            int hours = (int)((totalTime / 3600) % 60);
+            totalTime = Time.time - initialTime;
+            //int hours = (int)((totalTime / 3600) % 60);
             int minutes = (int)((totalTime / 60) % 60);
             int seconds = (int)(totalTime % 60);
             int milliseconds = (int)((totalTime * 100) - (((int)totalTime) * 100));
 
-            string scoreHour = hours.ToString();
+            //string scoreHour = hours.ToString();
             string scoreMin = minutes.ToString();
             string scoreSec = seconds.ToString();
             string scoreMil = milliseconds.ToString();
@@ -165,10 +165,10 @@ public class Player : MonoBehaviour
             {
                 scoreMil = "0" + scoreMil;
             }
-            if (hours < 10)
-            {
-                scoreHour = "0" + scoreHour;
-            }
+            //if (hours < 10)
+            //{
+            //    scoreHour = "0" + scoreHour;
+            //}
             if (seconds < 10)
             {
                 scoreSec = "0" + scoreSec;
@@ -178,7 +178,8 @@ public class Player : MonoBehaviour
                 scoreMin = "0" + scoreMin;
             }
 
-            score = scoreHour + ":" + scoreMin + ":" + scoreSec + ":" + scoreMil;
+            //score = scoreHour + ":" + scoreMin + ":" + scoreSec + ":" + scoreMil;
+            score = scoreMin + ":" + scoreSec + ":" + scoreMil;
             time.text = score + "\n29 OCT. 1998";
 
         }

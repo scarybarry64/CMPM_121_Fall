@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController3 : MonoBehaviour
+public class Man : MonoBehaviour
 {
 
     // Local variables
@@ -32,8 +32,14 @@ public class EnemyController3 : MonoBehaviour
     private void Update()
     {
 
-        FollowPlayer();
-
+        if (game.status == "play")
+        {
+            FollowPlayer();
+        }
+        else
+        {
+            agent.SetDestination(transform.position);
+        }
 
     }
 

@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Woman : MonoBehaviour
 {
 
     // Local variables
@@ -32,17 +32,22 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
 
-        // Face player at all times
-        Vector3 direction = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        body.rotation = Quaternion.Euler(0, angle, 0);
-        direction.Normalize();
-
-        // Move towards player if not in camera view
-        // Code from: https://www.youtube.com/watch?v=4Wh22ynlLyk
-        if (!visible)
+        if (game.status == "play")
         {
-            body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+            
+            // Face player at all times
+            Vector3 direction = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            body.rotation = Quaternion.Euler(0, angle, 0);
+            direction.Normalize();
+
+            // Move towards player if not in camera view
+            // Code from: https://www.youtube.com/watch?v=4Wh22ynlLyk
+            if (!visible)
+            {
+                body.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+            }
+
         }
 
     }
