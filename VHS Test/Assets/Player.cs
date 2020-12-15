@@ -101,8 +101,8 @@ public class Player : MonoBehaviour
             float z = Input.GetAxis("Vertical"); // Unity uses xzy axis order
             Vector3 movement = transform.right * x + transform.forward * z;
             controller.Move(movement * speed * Time.deltaTime);
-            Debug.Log("x:" + x);
-            Debug.Log("z:" + z);
+            //Debug.Log("x:" + x);
+            //Debug.Log("z:" + z);
 
 
             // If moving, randomly adjust footstep sound pitch and play often
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 
                 //int random = Mathf.Random
 
-                audio.SetPitch("Footstep2", Random.Range(0.1f, 1.25f));
+                audio.SetPitch("Footstep2", Random.Range(0.1f, 1.5f));
                 audio.Play("Footstep2");
                 initialTimeSound = Time.time;
             }

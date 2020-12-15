@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
     // Player go bye-bye when Pale Lady reaches em
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.name == "Player")
+        if (collider.CompareTag("Player"))
         {
             game.status = "dead";
         }
