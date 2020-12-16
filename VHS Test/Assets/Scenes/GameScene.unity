@@ -212,7 +212,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PRESS P TO PLAY
+  m_Text: WE'RE COMING
 --- !u!222 &121555783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1796,6 +1796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Time
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393502345501276017, guid: d858b7959c738634ba798463e4aa19f8,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2393502345501276018, guid: d858b7959c738634ba798463e4aa19f8,
         type: 3}

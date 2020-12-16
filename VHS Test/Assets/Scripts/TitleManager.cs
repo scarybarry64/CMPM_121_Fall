@@ -1,25 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+    private Text playButton;
+
+    private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //playButton = Cnvas.Find("VHS Overlay").Find("Play").GetComponent<Text>();
+        playButton = FindObjectOfType<Canvas>().transform.Find("Play").GetComponent<Text>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-        if (Input.GetKey(KeyCode.P))
+        if (Random.Range(0, 1000) < 995f)
         {
-            SceneManager.LoadScene("GameScene");
+            playButton.text = "PLAY ▶";
+        }
+        else
+        {
+            playButton.text = "PLAY ▶ WITH US";
         }
 
     }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
 }

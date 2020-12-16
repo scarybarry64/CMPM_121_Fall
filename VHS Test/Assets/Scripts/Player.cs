@@ -126,19 +126,39 @@ public class Player : MonoBehaviour
         
         if (game.status == "play")
         {
-            status.text = "PLAY ▶";
-            menu.enabled = false;
-        }
-        else if (game.status == "dead")
-        {
-            //status.text = "DEAD ▇\nPRESS P TO PLAY";
-            status.text = "DEAD ∎∎";
-            menu.enabled = true;
+            //status.text = "PLAYING ▶";
+
+            if (Random.Range(0, 1000) < 993)
+            {
+                //menu.enabled = false;
+                status.text = "PLAYING ▶";
+            }
+            else
+            {
+                //menu.enabled = true;
+                status.text = "PLAYING ▶ WE'RE COMING";
+            }
         }
         else
         {
-            status.text = "PAUSE ∎∎";
+            //status.text = "DEAD ▇\nPRESS P TO PLAY";
+            //status.text = "DEAD ▇▇";
+            //menu.enabled = true;
+
+            //status.text = "PLAYING ▶";
+
+            if (Random.Range(0, 1000) < 993)
+            {
+                //menu.enabled = false;
+                status.text = "DEAD ▇▇";
+            }
+            else
+            {
+                //menu.enabled = true;
+                status.text = "DEAD ▇▇ WE FOUND YOU";
+            }
         }
+
 
     }
 
