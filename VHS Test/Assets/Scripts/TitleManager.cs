@@ -7,18 +7,29 @@ using UnityEngine.SceneManagement;
 public class TitleManager : MonoBehaviour
 {
 
+    new AudioManager audio;
 
     private Text playButton;
+    private bool hasStarted = false;
 
     private void Awake()
     {
-        //playButton = Cnvas.Find("VHS Overlay").Find("Play").GetComponent<Text>();
+
+        audio = FindObjectOfType<AudioManager>();
         playButton = FindObjectOfType<Canvas>().transform.Find("Play").GetComponent<Text>();
 
     }
 
     private void Update()
     {
+
+
+        if (!hasStarted)
+        {
+            hasStarted = true;
+            audio.Play("Ambience");
+        }
+
         if (Random.Range(0, 1000) < 995f)
         {
             playButton.text = "PLAY ▶";
@@ -32,7 +43,15 @@ public class TitleManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(Do());
     }
 
+    private IEnumerator Do()
+    {
+        audio.Play("PlaySound");
+
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        SceneManager.LoadScene("GameScene");
+    }
 }

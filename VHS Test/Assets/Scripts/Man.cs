@@ -15,7 +15,7 @@ public class Man : MonoBehaviour
     private Rigidbody body;
     private NavMeshAgent agent;
     private Vector3 movement;
-    private float speed;
+    private float speed, detection;
 
     private void Awake()
     {
@@ -24,7 +24,8 @@ public class Man : MonoBehaviour
         player = FindObjectOfType<Player>();
         body = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        speed = game.enemy3Speed;
+        speed = game.manSpeed;
+        detection = game.manDetection;
 
     }
 
@@ -32,7 +33,7 @@ public class Man : MonoBehaviour
     private void Update()
     {
 
-        if (game.status == "play")
+        if ((Vector3.Distance(transform.position, player.transform.position) <= detection) && game.status == "play")
         {
             FollowPlayer();
         }

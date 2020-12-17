@@ -23,8 +23,8 @@ public class Woman : MonoBehaviour
         game = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
         body = GetComponent<Rigidbody>();
-        speed = game.enemy1Speed;
-        detectionRadius = game.enemy1DetectionRadius;
+        speed = game.womanSpeed;
+        detectionRadius = game.womanDetection;
 
     }
 

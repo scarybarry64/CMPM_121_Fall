@@ -27,7 +27,7 @@ public class Child : MonoBehaviour
         game = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
         body = GetComponent<Rigidbody>();
-        speed = game.enemy2Speed;
+        speed = game.childSpeed;
         mask = LayerMask.GetMask("Obstacles");
 
     }
