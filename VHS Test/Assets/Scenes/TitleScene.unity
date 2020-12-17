@@ -324,8 +324,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Ambience
-    clip: {fileID: 8300000, guid: a94d14065f4c77142bfc605ed88d4d04, type: 3}
-    volume: 0.1
+    clip: {fileID: 8300000, guid: 94d7584093ed03340a7db47257ecfad9, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
